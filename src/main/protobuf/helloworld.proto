@@ -1,0 +1,7 @@
+syntax = "proto3";
+
+package io.ontherocks.hello.grpc;
+
+message Hello {
+  string to_be_greeted = 1;
+}

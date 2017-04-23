@@ -9,6 +9,7 @@ lazy val `hello-grpc-proto` =
     .settings(settings)
     .settings(
       libraryDependencies ++= Seq(
+        library.scalaPbRuntime,
         library.scalaCheck % Test,
         library.scalaTest  % Test
       )
@@ -24,8 +25,9 @@ lazy val library =
       val scalaCheck = "1.13.5"
       val scalaTest  = "3.0.3"
     }
-    val scalaCheck = "org.scalacheck" %% "scalacheck" % Version.scalaCheck
-    val scalaTest  = "org.scalatest"  %% "scalatest"  % Version.scalaTest
+    val scalaCheck     = "org.scalacheck"         %% "scalacheck"      % Version.scalaCheck
+    val scalaPbRuntime = "com.trueaccord.scalapb" %% "scalapb-runtime" % com.trueaccord.scalapb.compiler.Version.scalapbVersion % "protobuf"
+    val scalaTest      = "org.scalatest"          %% "scalatest"       % Version.scalaTest
   }
 
 // *****************************************************************************
@@ -35,12 +37,13 @@ lazy val library =
 lazy val settings =
   commonSettings ++
   gitSettings ++
-  headerSettings
+  headerSettings ++
+  scalaPbSettings
 
 lazy val commonSettings =
   Seq(
-    // scalaVersion from .travis.yml via sbt-travisci - not yet!!
-    scalaVersion := "2.12.2",
+    // scalaVersion from .travis.yml via sbt-travisci
+    // scalaVersion := "2.12.2",
     organization := "io.ontherocks",
     scalacOptions ++= Seq(
       "-unchecked",
@@ -67,5 +70,9 @@ import de.heikoseeberger.sbtheader.HeaderPattern
 import de.heikoseeberger.sbtheader.license._
 lazy val headerSettings =
   Seq(
-    headers := Map("scala" -> Apache2_0("2016", "Petra Bierleutgeb"))
+    headers := Map("scala" -> Apache2_0("2017", "Petra Bierleutgeb"))
   )
+
+lazy val scalaPbSettings = Seq(
+  PB.targets in Compile := Seq(scalapb.gen() -> (sourceManaged in Compile).value)
+)
