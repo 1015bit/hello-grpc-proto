@@ -9,7 +9,9 @@ lazy val `hello-grpc-proto` =
     .settings(settings)
     .settings(
       libraryDependencies ++= Seq(
+        library.grpcNetty,
         library.scalaPbRuntime,
+        library.scalaPbRuntimeGrpc,
         library.scalaCheck % Test,
         library.scalaTest  % Test
       )
@@ -25,9 +27,11 @@ lazy val library =
       val scalaCheck = "1.13.5"
       val scalaTest  = "3.0.3"
     }
-    val scalaCheck     = "org.scalacheck"         %% "scalacheck"      % Version.scalaCheck
-    val scalaPbRuntime = "com.trueaccord.scalapb" %% "scalapb-runtime" % com.trueaccord.scalapb.compiler.Version.scalapbVersion % "protobuf"
-    val scalaTest      = "org.scalatest"          %% "scalatest"       % Version.scalaTest
+    val grpcNetty          = "io.grpc"                 % "grpc-netty"           % com.trueaccord.scalapb.compiler.Version.grpcJavaVersion
+    val scalaCheck         = "org.scalacheck"         %% "scalacheck"           % Version.scalaCheck
+    val scalaPbRuntime     = "com.trueaccord.scalapb" %% "scalapb-runtime"      % com.trueaccord.scalapb.compiler.Version.scalapbVersion % "protobuf"
+    val scalaPbRuntimeGrpc = "com.trueaccord.scalapb" %% "scalapb-runtime-grpc" % com.trueaccord.scalapb.compiler.Version.scalapbVersion
+    val scalaTest          = "org.scalatest"          %% "scalatest"            % Version.scalaTest
   }
 
 // *****************************************************************************
