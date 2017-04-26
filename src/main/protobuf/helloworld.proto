@@ -1,7 +1,27 @@
 syntax = "proto3";
 
+import "scalapb/scalapb.proto";
+
+option (scalapb.options) = {
+  // package_name: "io.ontherocks.hello.grpc"
+  flat_package: false // default
+  single_file: false // default
+  // import: "com.trueaccord.pb.MyType"
+  // import: "com.trueaccord.other._"
+  // preamble: "sealed trait BaseMessage"
+  // preamble: "sealed trait CommonMessage"
+};
+
 package io.ontherocks.hello.grpc;
 
-message Hello {
-  string to_be_greeted = 1;
+service HelloWorld {
+  rpc SayHello(ToBeGreeted) returns (Greeting);
+}
+
+message ToBeGreeted {
+  string person = 1;
+}
+
+message Greeting {
+  string message = 1;
 }
