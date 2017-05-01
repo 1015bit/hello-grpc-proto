@@ -49,6 +49,7 @@ lazy val commonSettings =
     // scalaVersion from .travis.yml via sbt-travisci
     // scalaVersion := "2.12.2",
     organization := "io.ontherocks",
+    licenses += ("Apache-2.0", url("http://www.apache.org/licenses/LICENSE-2.0")),
     scalacOptions ++= Seq(
       "-unchecked",
       "-deprecation",
