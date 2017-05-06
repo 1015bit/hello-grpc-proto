@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package io.ontherocks.hello.grpc
+package io.ontherocks.hellogrpc
 
 package object proto {
 

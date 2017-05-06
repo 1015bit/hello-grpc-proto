@@ -1,6 +1,6 @@
 syntax = "proto3";
 
-package io.ontherocks.hello.grpc;
+package io.ontherocks.hellogrpc;
 
 service HelloWorld {
   rpc SayHello(ToBeGreeted) returns (Greeting);
