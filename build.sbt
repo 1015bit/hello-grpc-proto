@@ -21,16 +21,17 @@ lazy val `hello-grpc-proto` =
 // Library dependencies
 // *****************************************************************************
 
+import  com.trueaccord.scalapb.compiler.{ Version => VersionPb }
 lazy val library =
   new {
     object Version {
       val scalaCheck = "1.13.5"
       val scalaTest  = "3.0.3"
     }
-    val grpcNetty          = "io.grpc"                 % "grpc-netty"           % com.trueaccord.scalapb.compiler.Version.grpcJavaVersion
+    val grpcNetty          = "io.grpc"                 % "grpc-netty"           % VersionPb.grpcJavaVersion
     val scalaCheck         = "org.scalacheck"         %% "scalacheck"           % Version.scalaCheck
-    val scalaPbRuntime     = "com.trueaccord.scalapb" %% "scalapb-runtime"      % com.trueaccord.scalapb.compiler.Version.scalapbVersion % "protobuf"
-    val scalaPbRuntimeGrpc = "com.trueaccord.scalapb" %% "scalapb-runtime-grpc" % com.trueaccord.scalapb.compiler.Version.scalapbVersion
+    val scalaPbRuntime     = "com.trueaccord.scalapb" %% "scalapb-runtime"      % VersionPb.scalapbVersion % "protobuf"
+    val scalaPbRuntimeGrpc = "com.trueaccord.scalapb" %% "scalapb-runtime-grpc" % VersionPb.scalapbVersion
     val scalaTest          = "org.scalatest"          %% "scalatest"            % Version.scalaTest
   }
 
