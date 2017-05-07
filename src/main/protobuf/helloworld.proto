@@ -1,15 +1,41 @@
 syntax = "proto3";
 
+import "google/protobuf/wrappers.proto";
+import "scalapb/scalapb.proto";
+
 package io.ontherocks.hellogrpc;
+
+option (scalapb.options) = {
+  // use a custom Scala package name
+  // package_name: "io.ontherocks.awesomegrpc"
+
+  // don't append file name to package
+  // flat_package: true
+
+  // generate one Scala file per proto file
+  // single_file: false
+
+  // add imports to generated file
+  // useful when extending traits/classes or using custom types
+  import: "io.ontherocks.hellogrpc.RockingMessage"
+
+  // code to put at the top of generated file
+  // works only with `single_file: true`
+  // preamble: "sealed trait SomeSealedTrait"
+};
 
 service HelloWorld {
   rpc SayHello(ToBeGreeted) returns (Greeting);
 }
 
 message ToBeGreeted {
-  string person = 1;
+  option (scalapb.message).extends = "RockingMessage";
+
+  google.protobuf.StringValue person = 1;
 }
 
 message Greeting {
+  option (scalapb.message).extends = "RockingMessage";
+
   string message = 1;
 }
