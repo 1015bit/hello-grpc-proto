@@ -16,10 +16,8 @@
 
 package io.ontherocks.hellogrpc
 
-package object proto {
+trait RockingMessage {
 
-  type Traversable[+A] = scala.collection.immutable.Traversable[A]
-  type Iterable[+A]    = scala.collection.immutable.Iterable[A]
-  type Seq[+A]         = scala.collection.immutable.Seq[A]
-  type IndexedSeq[+A]  = scala.collection.immutable.IndexedSeq[A]
+  val rocking = "I'm a generated message and I rock!"
+
 }
