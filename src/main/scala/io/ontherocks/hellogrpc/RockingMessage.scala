@@ -18,6 +18,6 @@ package io.ontherocks.hellogrpc
 
 trait RockingMessage {
 
-  val rocking = "I'm a generated message and I rock!"
+  val rocking = "I rock!"
 
 }
