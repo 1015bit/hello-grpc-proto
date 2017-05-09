@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package io.ontherocks.hellogrpc;
+
+service Sum {
+  rpc Add(stream SumRequest) returns (stream SumResponse);
+}
+
+message SumRequest {
+  int32 toAdd = 1;
+}
+
+message SumResponse {
+  int32 currentResult = 1;
+}
